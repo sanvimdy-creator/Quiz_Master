@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- PAGE 1: Name + Domain + Topic -->
+<div class="page active" id="page1">
+  <div class="card">
+    <h1>Welcome to QuizMaster</h1>
+    <p class="subtitle">Test your knowledge across multiple domains</p>
+
+    <label for="userName">Your Name</label>
+    <input type="text" id="userName" placeholder="e.g. Arjun Sharma" />
+
+    <label for="userDomain">Domain of Interest</label>
+    <input type="text" id="userDomain" placeholder="e.g. Software Engineering, Medicine..." />
+
+    <p class="topic-heading">Choose your quiz topic</p>
+
+    <div class="topic-grid" id="topicGrid">
+      <div class="topic-card" data-topic="Science" onclick="selectTopic(this)">
+        <div class="icon">🔬</div>
+        <div class="name">Science</div>
+        <div class="desc">Physics, Chemistry, Biology</div>
+      </div>
+      <div class="topic-card" data-topic="History" onclick="selectTopic(this)">
+        <div class="icon">🏛️</div>
+        <div class="name">History</div>
+        <div class="desc">World events & civilizations</div>
+      </div>
+      <div class="topic-card" data-topic="Technology" onclick="selectTopic(this)">
+        <div class="icon">💻</div>
+        <div class="name">Technology</div>
+        <div class="desc">Computers, AI, Internet</div>
+      </div>
+      <div class="topic-card" data-topic="Mathematics" onclick="selectTopic(this)">
+        <div class="icon">📐</div>
+        <div class="name">Mathematics</div>
+        <div class="desc">Algebra, Geometry, Logic</div>
+      </div>
+      <div class="topic-card" data-topic="Geography" onclick="selectTopic(this)">
+        <div class="icon">🌍</div>
+        <div class="name">Geography</div>
+        <div class="desc">Countries, capitals, nature</div>
+      </div>
+    </div>
+
+    <button class="btn" onclick="startQuiz()">Start Quiz →</button>
+  </div>
+</div>
+
+<!-- PAGE 2: Quiz -->
+<div class="page" id="page2">
+  <div class="card">
+    <div class="quiz-header">
+      <div>
+        <div class="quiz-topic-label" id="quizTopic">Topic</div>
+        <div class="quiz-user-label" id="quizUser">User</div>
+      </div>
+      <div class="score-badge" id="liveScore">Score: 0</div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width: 5%"></div>
+    </div>
+
+    <div class="q-counter" id="qCounter">Question 1 of 20</div>
+    <div class="question-text" id="questionText"></div>
+
+    <div class="options" id="optionsContainer"></div>
+
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next →</button>
+  </div>
+</div>
+
+<!-- PAGE 3: Results -->
+<div class="page" id="page3">
+  <div class="card">
+    <div class="result-header">
+      <div id="gradeBadge" class="grade-badge"></div>
+      <div class="big-score" id="resultPercent">0%</div>
+      <div class="score-label">Your Score</div>
+    </div>
+
+    <div class="result-info" id="resultInfo"></div>
+    <div class="result-grid" id="resultGrid"></div>
+
+    <button class="btn" onclick="location.reload()">Take Another Quiz</button>
+    <button class="retry-btn" onclick="retryQuiz()">Retry Same Topic</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
